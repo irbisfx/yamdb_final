@@ -20,7 +20,7 @@ jobs:
           # установка flake8 и его плагинов
           pip install flake8 pep8-naming flake8-broken-line flake8-return flake8-isort
           # установка зависимостей
-          pip install -r requirements.txt
+          pip install -r ./api_yamdb/requirements.txt
 
       - name: Test with flake8 and django tests
         run: |
@@ -66,10 +66,10 @@ jobs:
           passphrase: ${{ secrets.PASSPHRASE }} # Если ваш ssh-ключ защищён фразой-паролем
           script: |
             # Выполняет pull образа с DockerHub
-            sudo docker pull irbisfx/api_yamdb
+            sudo docker pull irbisfx/infra_actions
             #остановка всех контейнеров
             sudo docker stop $(sudo docker ps -a -q)
-            sudo docker run --rm -d -p 5000:5000 irbisfx/api_yamdb
+            sudo docker run --rm -d -p 5000:5000 irbisfx/infra_actions
 
   send_message:
     runs-on: ubuntu-latest
