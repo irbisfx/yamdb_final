@@ -68,10 +68,10 @@ jobs:
           passphrase: ${{ secrets.PASSPHRASE }} # Если ваш ssh-ключ защищён фразой-паролем
           script: |
             # Выполняет pull образа с DockerHub
-            sudo docker pull irbisfx/api_yamdb
+            sudo docker pull irbisfx/api_yamdb:v1.00.0000
             #остановка всех контейнеров
             sudo docker stop $(sudo docker ps -a -q)
-            sudo docker run --rm -d -p 5000:5000 irbisfx/api_yamdb
+            sudo docker run --rm -d -p 5000:5000 irbisfx/api_yamdb:v1.00.0000
 
   send_message:
     runs-on: ubuntu-latest
